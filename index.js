@@ -5,15 +5,31 @@ addEventListener('fetch', event => {
  * Respond with hello worker text
  * @param {Request} request
  */
+
+
 async function handleRequest(request) {
-  return new Response(
-    fetch('https://cfw-takehome.developers.workers.dev/api/variants')
-  .then((data) => {
-    return data.json();
-  })
-  .then((data) => {
-    console.log(data);
-  }), {
-    headers: { 'content-type': 'text/plain' },
-  })
+  let urls = await (await fetch('https://cfw-takehome.developers.workers.dev/api/variants')).json();
+
+  //first variant
+  const first = await fetch(urls.variants[0]).then(function(response) {
+    return response.text();
+  }).then(function(string) {
+      return string;
+  }).catch(function(err) {  
+      console.log('Fetch Error', err);  
+  });
+
+  //second variant
+  const second = await fetch(urls.variants[1]).then(function(response) {
+    return response.text();
+  }).then(function(string) {
+    return string;
+  }).catch(function(err) {  
+    return 'Fetch Error', err;  
+  });
+
+  //picking one of them randomly
+  let ran = Math.random() >= 0.5 ? first: second;
+  //displaying as html
+  return new Response(ran, { headers: {'Content-type': 'text/html'}});
 }
