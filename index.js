@@ -29,7 +29,8 @@ async function handleRequest(request) {
   });
 
   //picking one of them randomly
-  let ran = Math.random() >= 0.5 ? first: second;
+  let ran = Math.random() >= 0.5 ? first: second
+
   //displaying as html
   return new Response(ran, { headers: {'Content-type': 'text/html'}});
 }
