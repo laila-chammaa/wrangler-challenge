@@ -1,3 +1,5 @@
+Deployed project: https://potatoes.lailachammaa.workers.dev/
+
 # Cloudflare Workers Internship Application: Full-Stack
 
 ## What is it?
