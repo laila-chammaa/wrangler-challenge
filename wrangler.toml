@@ -1,0 +1,6 @@
+name = "potatoes"
+type = "javascript"
+account_id = "bf9437b346a1b77d6c4ff15826e5d78d"
+workers_dev = true
+route = ""
+zone_id = ""
